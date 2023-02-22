@@ -9,8 +9,8 @@ const Products = require("./models/productSchema");
 const cors = require("cors");
 const app = express();
 app.use(cors());
-app.use(router);
 app.use(cookieParser());
+app.use(router);
 app.use(express.json);
 const port = 7803;
 app.listen(port, () => {
