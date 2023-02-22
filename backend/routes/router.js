@@ -102,7 +102,7 @@ router.post("/login", jsonParser, async (req, res) => {
 router.post("/addcart/:id", authenicate, async (req, res) => {
   try {
     const { id } = req.params;
-    const cart = await products.findOne({ id: id });
+    const cart = await Products.findOne({ id: id });
     console.log(cart);
 
     const Usercontact = await Users.findOne({ _id: req.userID });
