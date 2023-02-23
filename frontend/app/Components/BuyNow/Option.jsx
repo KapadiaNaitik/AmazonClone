@@ -5,36 +5,36 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Option({ deletedata, get }) {
-  // console.log(deletedata);
-
   const { account, setAccount } = useContext(Logincontext);
-  // console.log(account);
 
   const removedata = async (id) => {
     try {
-      const res = await fetch(`remove/${id}`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER}/remove/${id}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
 
       const data = await res.json();
-      // console.log(data);
+      // //console.log(data);
 
       if (res.status === 400 || !data) {
-        console.log("error aai remove time pr");
+        //console.log("error");
       } else {
         setAccount(data);
         get();
-        toast.success("Iteam remove from cart 😃!", {
+        toast.success("Item remove from cart 😃!", {
           position: "top-center",
         });
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

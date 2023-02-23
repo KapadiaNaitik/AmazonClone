@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/Footer.module.css";
 export default function Footer() {
   const year = new Date().getFullYear();
-  console.log(year);
+  //console.log(year);
   return (
     <div className={styles.footer}>
       <div className={styles.footer_container}>

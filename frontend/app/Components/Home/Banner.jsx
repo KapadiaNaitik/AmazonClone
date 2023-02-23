@@ -30,10 +30,15 @@ export default function Banner() {
           },
         }}
       >
-        {data.map((imag, i) => {
+        {data.map((image, i) => {
           return (
             <>
-              <img src={imag} alt="img" key={i} className={styles.banner_img} />
+              <img
+                src={image}
+                alt="img"
+                key={i}
+                className={styles.banner_img}
+              />
             </>
           );
         })}

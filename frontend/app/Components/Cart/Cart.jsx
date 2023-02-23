@@ -2,29 +2,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/Cart.module.css";
 import { Divider } from "@mui/material";
-import { useHistory, useParams } from "react-router";
 import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import { Logincontext } from "../Context/ContextProvider";
 
 export default function Cart({ id }) {
   const { account, setAccount } = useContext(Logincontext);
-  console.log(account);
+  //console.log(account);
   const router = useRouter();
 
-  // const query = router.query;
-  // console.log("query", query);
-  // const { id } = useParams("");
-  console.log("cart", id);
-
-  // const history = useHistory();
+  //console.log("cart", id);
 
   const [proddata, setProdata] = useState("");
 
   const getData = async () => {
-    console.log("call", id);
+    //console.log("call", id);
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER}/getproducts/${id}`,
       {
@@ -40,7 +33,7 @@ export default function Cart({ id }) {
     );
 
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
 
     if (res.status !== 201) {
       alert("no data available");
@@ -54,12 +47,10 @@ export default function Cart({ id }) {
   }, [id]);
 
   const addtocart = async (id) => {
-    console.log(JSON.stringify(proddata));
+    //console.log(JSON.stringify(proddata));
     const check = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER}/addcart/${id}`,
       {
-        mode: "no-cors",
-
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -77,7 +68,31 @@ export default function Cart({ id }) {
       alert("no data available");
     } else {
       setAccount(data1);
-      history.push("/buynow");
+    }
+  };
+  const buy = async (id) => {
+    //console.log(JSON.stringify(proddata));
+    const check = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER}/addcart/${id}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          proddata,
+        }),
+        credentials: "include",
+      }
+    );
+    const data1 = await check.json();
+
+    if (check.status !== 201) {
+      alert("no data available");
+    } else {
+      setAccount(data1);
+      router.push("/buynow");
     }
   };
 
@@ -94,7 +109,12 @@ export default function Cart({ id }) {
               >
                 Add to Cart
               </button>
-              <button className={styles.cart_btn2}>Buy Now</button>
+              <button
+                className={styles.cart_btn2}
+                onClick={() => buy(proddata.id)}
+              >
+                Buy Now
+              </button>
             </div>
           </div>
           <div className={styles.right_cart}>
@@ -140,7 +160,7 @@ export default function Cart({ id }) {
               </p>
             </div>
             <p className={styles.description}>
-              About the Iteam :{" "}
+              About the Item :{" "}
               <span
                 style={{
                   color: "#565959",
@@ -157,7 +177,7 @@ export default function Cart({ id }) {
       )}
 
       {!proddata ? (
-        <div className="circle">
+        <div className={styles.circle}>
           <CircularProgress />
           <h2> Loading....</h2>
         </div>

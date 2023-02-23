@@ -15,13 +15,13 @@ export default function SignUp() {
     cpassword: "",
   });
 
-  // console.log(userData);
+  // //console.log(userData);
 
   const adddata = (e) => {
     const { name, value } = e.target;
-    // console.log(e);
-    // console.log(name, value);
-    console.log(userData);
+    // //console.log(e);
+    // //console.log(name, value);
+    //console.log(userData);
 
     setUserdata((pre) => {
       return {
@@ -51,7 +51,7 @@ export default function SignUp() {
       });
 
       const data = await res.json();
-      console.log(data);
+      //console.log(data);
 
       if (res.status === 422 || !data) {
         toast.error("Check Details Again!", {
@@ -71,7 +71,7 @@ export default function SignUp() {
         });
       }
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
     }
   };
 

@@ -1,3 +1,4 @@
+"use client";
 import { Divider } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Buynow.module.css";
@@ -7,10 +8,11 @@ import Right from "./Right";
 import Subtotal from "./Subtotal";
 
 export default function Buynow() {
+  //console.log("hehe");
   const [cartdata, setCartdata] = useState("");
 
   const getdatabuy = async () => {
-    const res = await fetch("/cartdetails", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/cartdetails`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -31,19 +33,6 @@ export default function Buynow() {
   useEffect(() => {
     getdatabuy();
   }, []);
-
-  // const [price, setPrice] = useState(0);
-  // const totalAmount = () => {
-  //     let price = 0
-  //     cartdata.map((e) => {
-  //         price += e.price.cost
-  //     })
-  //     setPrice(price)
-  // }
-
-  // useEffect(() => {
-  //     totalAmount();
-  // }, [cartdata]);
 
   return (
     <>

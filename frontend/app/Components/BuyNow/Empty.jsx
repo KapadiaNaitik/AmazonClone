@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import Link from "next/link";
 import styles from "../../styles/Buynow.module.css";
 
 export default function Empty() {
@@ -15,9 +15,9 @@ export default function Empty() {
             <h1>Your Amazon Basket is empty</h1>
             <p>See recommendations</p>
           </div>
-          <NavLink className={styles.empty_btn} to="/">
+          <Link className={styles.empty_btn} href="/">
             Add Your Items
-          </NavLink>
+          </Link>
         </div>
       </div>
     </div>
