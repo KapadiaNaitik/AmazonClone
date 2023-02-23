@@ -8,8 +8,8 @@ const Products = require("./models/productSchema");
 // const DefaultData=require("./defaultdata")
 const cors = require("cors");
 const app = express();
-app.use(cors());
-app.options("*", cors());
+// app.use(cors());
+// app.options("*", cors());
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -30,6 +30,12 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 app.use(router);
