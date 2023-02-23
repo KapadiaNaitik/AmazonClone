@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
 });
 app.use(
   cors({
-    origin: "*",
+    origin: "https://amazonclone-production.up.railway.app",
     credentials: true,
   })
 );
