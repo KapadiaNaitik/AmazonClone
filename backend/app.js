@@ -14,7 +14,7 @@ app.use(function (req, res, next) {
   // Website you wish to allow to connect
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://amazon-clone-mont.vercel.app/"
+    "https://amazon-clone-mont.vercel.app"
   );
 
   // Request methods you wish to allow
@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
   // Request headers you wish to allow
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "https://amazon-clone-mont.vercel.app/"
+    "https://amazon-clone-mont.vercel.app"
   );
 
   // Set to true if you need the website to include cookies in the requests sent
@@ -38,7 +38,7 @@ app.use(function (req, res, next) {
 });
 app.use(
   cors({
-    origin: "https://amazon-clone-mont.vercel.app/",
+    origin: "https://amazon-clone-mont.vercel.app",
     credentials: true,
   })
 );
