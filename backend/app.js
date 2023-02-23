@@ -12,7 +12,10 @@ const app = express();
 // app.options("*", cors());
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://amazonclone-production.up.railway.app"
+  );
 
   // Request methods you wish to allow
   res.setHeader(
@@ -21,7 +24,10 @@ app.use(function (req, res, next) {
   );
 
   // Request headers you wish to allow
-  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "https://amazonclone-production.up.railway.app"
+  );
 
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
